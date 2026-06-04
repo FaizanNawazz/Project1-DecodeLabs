@@ -1,0 +1,356 @@
+/* 
+   1. DESIGN SPECIFICATION SYSTEM VARIABLES (2025 Aesthetics Blueprint)
+ */
+:root {
+    /* Required Color Space Tokens */
+    --mocha-mousse: #A5856F;
+    /* Stability Accent */
+    --ethereal-blue: #A0D4E0;
+    /* Trust / Functional Accent */
+    --moonlit-grey: #F2F0EA;
+    /* Light Grounded Base */
+    --dark-charcoal: #2C2A29;
+    /* High Contrast Deep Neutral */
+    --pure-white: #FFFFFF;
+
+    /* Semantic Mappings */
+    --bg-primary: var(--moonlit-grey);
+    --bg-card: var(--pure-white);
+    --text-main: var(--dark-charcoal);
+    --text-muted: #595654;
+    --accent: var(--mocha-mousse);
+
+    /* Typography Constraints: Max 2 Font Families */
+    --font-heading: 'Inter', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* Accessible Theme Overrides via JavaScript Interaction State */
+html[data-vibe="grounded"] {
+    --bg-primary: var(--dark-charcoal);
+    --bg-card: #383534;
+    --text-main: var(--moonlit-grey);
+    --text-muted: #C5C2BC;
+    --accent: var(--ethereal-blue);
+}
+
+/* Reset and Core Layout Preserves */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+/* Fluid Typography using clamp() rules */
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    margin-bottom: 1.5rem;
+}
+
+/*
+   2. HEADER & MOBILE INTERACTIVE MICRO-COMPONENTS (Flexbox Design)
+ */
+.site-header {
+    background-color: var(--bg-card);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 70px;
+    transition: background-color 0.4s ease;
+}
+
+.header-container {
+    max-width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+/* Mobile Toggle Layout Controls */
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-main);
+    cursor: pointer;
+    display: block;
+    /* Shown by default on single-column viewport layout */
+}
+
+/* Micro Nav Component Links Layout Defaults */
+.main-nav {
+    display: none;
+    /* Controlled dynamically via state classes toggles */
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-card);
+    padding: 2rem 1.5rem;
+    border-bottom: 2px solid var(--accent);
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.main-nav.active {
+    display: flex;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-text-main);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--accent);
+}
+
+.cta-button,
+.btn {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.cta-button {
+    background-color: var(--accent);
+    color: var(--pure-white);
+}
+
+/*
+   3. MACROSCOPIC 2D CORE LAYOUT CONFIGURATION (Mobile-First Strategy)
+*/
+.macro-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Strict Initial Single Column Framework */
+    gap: 2rem;
+    padding: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Hero Section Structural Defaults (Height bounded constraint) */
+.hero-section {
+    background-color: var(--bg-card);
+    min-height: 360px;
+    padding: 3rem 2rem;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.hero-content h1 {
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 650px;
+    margin-bottom: 2rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: var(--pure-white);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--accent);
+    color: var(--text-main);
+}
+
+/* Adaptive Content Grids */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: var(--bg-card);
+    padding: 2rem;
+    border-radius: 6px;
+    border-left: 4px solid var(--accent);
+}
+
+.card-icon {
+    font-size: 0.85rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+.card h3 {
+    margin-bottom: 0.75rem;
+}
+
+.card p {
+    color: var(--text-muted);
+}
+
+/* Sidebar Styling Blocks */
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sidebar-widget {
+    background-color: var(--bg-card);
+    padding: 2rem;
+    border-radius: 6px;
+}
+
+.sidebar-widget h3 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 0.5rem;
+}
+
+.status-widget ul {
+    list-style: none;
+}
+
+.status-widget li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.status-widget span {
+    font-weight: 600;
+    color: var(--accent);
+}
+
+/* Terminal Footer */
+.site-footer {
+    background-color: var(--bg-card);
+    padding: 2.5rem 1.5rem;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.footer-content p:first-child {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* 
+   4. MIN-WIDTH MEDIA QUERY EXPANSION PROTOCOLS (Tablet & Desktop Steps)
+*/
+
+/* STEP A: Tablet Structural Adjustments (>= 768px Viewports) */
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none;
+        /* Remove toggle switch tool on expansive targets */
+    }
+
+    .main-nav {
+        display: flex;
+        position: static;
+        width: auto;
+        padding: 0;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: none;
+        gap: 2rem;
+        background: transparent;
+    }
+
+    .content-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 Columns Layout Assignment */
+    }
+}
+
+/* STEP B: Desktop Complex Architecture Setup (>= 1024px Viewports) */
+@media (min-width: 1024px) {
+    .macro-layout {
+        /* Macro Multi-Column Assignment Setup */
+        grid-template-columns: 1080px 1060px;
+        /* Precise layout rule split */
+        grid-template-columns: 3fr 1fr;
+        grid-template-areas:
+            "hero hero"
+            "content sidebar";
+    }
+
+    .hero-section {
+        grid-area: hero;
+    }
+
+    .content-area {
+        grid-area: content;
+    }
+
+    .side-panel {
+        grid-area: sidebar;
+    }
+
+    .content-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 Columns Layout Clean Slate */
+    }
+}
