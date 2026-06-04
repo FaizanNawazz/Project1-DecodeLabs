@@ -1,88 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Architecture Hub | Project 1</title>
+    <title>Enterprise Digital Architecture Portal | Project 1</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
+
+    <div class="utility-bar">
+        <span>Framework Mandate: 0% External Dependencies (Pure Standards Mode)</span>
+    </div>
 
     <header class="site-header">
         <div class="header-container">
-            <div class="logo">DigitalCraft<span>.</span></div>
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+                DigitalCraft<span>.</span>
+            </div>
             <button class="menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
-                ✕
+                ☰
             </button>
             <nav class="main-nav">
-                <a href="#" class="nav-link active">Home</a>
-                <a href="#" class="nav-link">Blueprint</a>
-                <a href="#" class="nav-link">Case Studies</a>
-                <a href="#" class="nav-link">About</a>
-                <button class="cta-button">Initialize Repos</button>
+                <a href="#" class="nav-link active">Architecture</a>
+                <a href="#" class="nav-link">System Blueprint</a>
+                <a href="#" class="nav-link">Audit Analytics</a>
+                <button class="cta-button">Initialize Repository</button>
             </nav>
         </div>
     </header>
 
     <main class="macro-layout">
-
+        
         <section class="hero-section">
+            <div class="hero-glow-backdrop"></div>
             <div class="hero-content">
+                <span class="badge-pill">Strategic Framework v2025</span>
                 <h1>Architecting for the Mobile Web</h1>
-                <p>Constructing dynamic, inclusive information systems that honor the mobile-first paradigm through
-                    pure, fluid frontend logic.</p>
+                <p>Constructing elegant, robust digital spaces honoring the mobile-first paradigm through pure fluid frontend computational logic.</p>
                 <div class="hero-actions">
-                    <button class="btn btn-primary">Explore Portfolio</button>
-                    <button class="btn btn-secondary" id="theme-btn">Shift Vibe</button>
+                    <button class="btn btn-primary">Launch Environment</button>
+                    <button class="btn btn-secondary" id="theme-btn">Shift Aesthetic Vibe</button>
                 </div>
             </div>
         </section>
 
-        <section class="content-area">
-            <h2>System Landmarks & Capabilities</h2>
-            <div class="content-grid">
+        <section class="controls-panel">
+            <div class="panel-header">
+                <h2>Layout Orchestration Grid</h2>
+                <div class="layout-switchers">
+                    <button class="view-btn active" data-view="grid" title="Grid Layout">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    </button>
+                    <button class="view-btn" data-view="list" title="Dense List Layout">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="content-grid" id="interactive-grid">
                 <article class="card">
-                    <div class="card-icon">01</div>
+                    <div class="card-header-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
                     <h3>Semantic Integrity</h3>
-                    <p>Coding with precision for AI parsing models and assistive web configurations. Structured meaning
-                        over generic divisions.</p>
+                    <p>Coding strict landmark configurations for AI processing parsing and structural clarity over messy generic divisions.</p>
                 </article>
 
                 <article class="card">
-                    <div class="card-icon">02</div>
+                    <div class="card-header-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
                     <h3>Adaptive Layouts</h3>
-                    <p>Fluid macroscopic view adjustments executing fluid configurations across any contemporary target
-                        layout device profile viewport.</p>
+                    <p>Fluid view boundaries utilizing advanced flexible properties executing fluid modifications over viewports flawlessly.</p>
                 </article>
 
                 <article class="card">
-                    <div class="card-icon">03</div>
+                    <div class="card-header-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
                     <h3>Universal Access</h3>
-                    <p>Adhering strictly to standard WCAG design access criteria protocols, delivering accessibility
-                        assurance without compromise.</p>
+                    <p>Adhering natively to rigid standard WCAG criteria, providing premium accessible experiences to global users securely.</p>
                 </article>
             </div>
         </section>
 
         <aside class="side-panel">
-            <div class="sidebar-widget">
-                <h3>Strategic Blueprint</h3>
-                <p>Ensure that if your software visual structure fails to map reliably in pure system grayscale
-                    settings, color addition will not rescue the interface experience.</p>
+            <div class="glass-widget profile-widget">
+                <div class="profile-header">
+                    <div class="avatar">DX</div>
+                    <div>
+                        <h4>Terminal User</h4>
+                        <p>Full-Stack Architect</p>
+                    </div>
+                </div>
             </div>
-            <div class="sidebar-widget status-widget">
-                <h3>System Health</h3>
-                <ul>
-                    <li>LCP Status: <span>Optimized</span></li>
-                    <li>CLS Value: <span>0.00 (Stable)</span></li>
-                    <li>Frameworks: <span>None (Pure Raw Specs)</span></li>
+
+            <div class="glass-widget status-widget">
+                <h3>System Matrix Logs</h3>
+                <ul class="matrix-list">
+                    <li>
+                        <span class="label">LCP Metrics:</span>
+                        <span class="status-pill positive">1.2s Optimized</span>
+                    </li>
+                    <li>
+                        <span class="label">CLS Layout Variance:</span>
+                        <span class="status-pill positive">0.00 Fixed</span>
+                    </li>
+                    <li>
+                        <span class="label">WCAG Access:</span>
+                        <span class="status-pill status-active">AA Compliant</span>
+                    </li>
                 </ul>
             </div>
         </aside>
@@ -91,15 +122,10 @@
 
     <footer class="site-footer">
         <div class="footer-content">
-            <p>&copy; 2026 DecodeLabs Internship Program. Handcrafted via Digital Craftsmanship Principles.</p>
-            <p>Strategic Execution Framework Baseline.</p>
+            <p>&copy; 2026 DecodeLabs Internship Program. Handcrafted with absolute Digital Craftsmanship.</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
-
 </body>
-
-
-
 </html>

@@ -1,356 +1,401 @@
 /* 
-   1. DESIGN SPECIFICATION SYSTEM VARIABLES (2025 Aesthetics Blueprint)
- */
+   1. ADVANCED DESIGN CORE COMPOSITIONS & VARIABLE MAPS [cite: 105]
+*/
 :root {
-    /* Required Color Space Tokens */
-    --mocha-mousse: #A5856F;
-    /* Stability Accent */
-    --ethereal-blue: #A0D4E0;
-    /* Trust / Functional Accent */
-    --moonlit-grey: #F2F0EA;
-    /* Light Grounded Base */
-    --dark-charcoal: #2C2A29;
-    /* High Contrast Deep Neutral */
-    --pure-white: #FFFFFF;
-
-    /* Semantic Mappings */
-    --bg-primary: var(--moonlit-grey);
-    --bg-card: var(--pure-white);
-    --text-main: var(--dark-charcoal);
-    --text-muted: #595654;
+    /* Precise 2025 Standard Palette Requirements [cite: 105] */
+    --mocha-mousse: #A5856F;     /* Stability Accent [cite: 109, 110] */
+    --ethereal-blue: #A0D4E0;    /* Trust Accent [cite: 111, 112] */
+    --moonlit-grey: #F2F0EA;     /* Base Canvas Background [cite: 113] */
+    
+    --charcoal-black: #1E1C1B;
+    --card-light: #FFFFFF;
+    
+    /* Functional Semantic Assignments */
+    --bg-app: var(--moonlit-grey);
+    --bg-surface: var(--card-light);
+    --text-primary: var(--charcoal-black);
+    --text-muted: #5E5A57;
     --accent: var(--mocha-mousse);
-
-    /* Typography Constraints: Max 2 Font Families */
-    --font-heading: 'Inter', sans-serif;
-    --font-body: 'Open Sans', sans-serif;
+    --border-subtle: rgba(165, 133, 111, 0.15);
+    
+    /* Design Specifications Limits [cite: 119] */
+    --font-sans-header: 'Inter', sans-serif;
+    --font-sans-body: 'Open Sans', sans-serif;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Accessible Theme Overrides via JavaScript Interaction State */
+/* Grounded Theme Map Config Override */
 html[data-vibe="grounded"] {
-    --bg-primary: var(--dark-charcoal);
-    --bg-card: #383534;
-    --text-main: var(--moonlit-grey);
-    --text-muted: #C5C2BC;
+    --bg-app: var(--charcoal-black);
+    --bg-surface: #2A2726;
+    --text-primary: var(--moonlit-grey);
+    --text-muted: #BCB8B3;
     --accent: var(--ethereal-blue);
+    --border-subtle: rgba(160, 212, 224, 0.15);
 }
 
-/* Reset and Core Layout Preserves */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Core Layout Preserves */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: var(--bg-primary);
-    color: var(--text-main);
-    font-family: var(--font-body);
-    line-height: 1.6;
-    transition: background-color 0.4s ease, color 0.4s ease;
+    background-color: var(--bg-app);
+    color: var(--text-primary);
+    font-family: var(--font-sans-body);
+    -webkit-font-smoothing: antialiased;
+    transition: var(--transition-smooth);
+    padding-bottom: 2rem;
 }
 
-h1,
-h2,
-h3 {
-    font-family: var(--font-heading);
+h1, h2, h3, h4 {
+    font-family: var(--font-sans-header);
     font-weight: 700;
     letter-spacing: -0.02em;
-    line-height: 1.2;
+    color: var(--text-primary);
 }
 
-/* Fluid Typography using clamp() rules */
-h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+/* Announcement Ticker Bar */
+.utility-bar {
+    background: linear-gradient(90deg, var(--charcoal-black), #3A3533);
+    color: var(--moonlit-grey);
+    font-family: var(--font-sans-header);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.5rem 1rem;
+    text-align: center;
+}
+html[data-vibe="grounded"] .utility-bar {
+    background: linear-gradient(90deg, #2A2726, #4A4442);
 }
 
-h2 {
-    font-size: clamp(1.5rem, 4vw, 2.25rem);
-    margin-bottom: 1.5rem;
-}
-
-/*
-   2. HEADER & MOBILE INTERACTIVE MICRO-COMPONENTS (Flexbox Design)
+/* 
+   2. HEADER & NAVIGATION MICRO-COMPONENTS [cite: 130, 141]
  */
 .site-header {
-    background-color: var(--bg-card);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1100;
     height: 70px;
-    transition: background-color 0.4s ease;
+    backdrop-filter: blur(12px);
+    transition: var(--transition-smooth);
 }
 
 .header-container {
     max-width: 1400px;
     height: 100%;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-family: var(--font-heading);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.35rem;
     font-weight: 700;
-    font-size: 1.5rem;
 }
+.logo svg { color: var(--accent); }
+.logo span { color: var(--accent); }
 
-.logo span {
-    color: var(--accent);
-}
-
-/* Mobile Toggle Layout Controls */
 .menu-toggle {
     background: none;
     border: none;
     font-size: 1.5rem;
-    color: var(--text-main);
+    color: var(--text-primary);
     cursor: pointer;
     display: block;
-    /* Shown by default on single-column viewport layout */
 }
 
-/* Micro Nav Component Links Layout Defaults */
 .main-nav {
     display: none;
-    /* Controlled dynamically via state classes toggles */
     position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background-color: var(--bg-card);
-    padding: 2rem 1.5rem;
-    border-bottom: 2px solid var(--accent);
+    top: 70px; left: 0; width: 100%;
+    background-color: var(--bg-surface);
+    padding: 2rem;
     flex-direction: column;
     gap: 1.5rem;
-    text-align: center;
+    border-bottom: 3px solid var(--accent);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
-
-.main-nav.active {
-    display: flex;
-}
+.main-nav.active { display: flex; }
 
 .nav-link {
     text-decoration: none;
-    color: var(--text-text-main);
-    font-family: var(--font-heading);
+    color: var(--text-primary);
+    font-family: var(--font-sans-header);
     font-weight: 600;
-    transition: color 0.2s ease;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 0.25rem 0;
 }
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--accent);
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; width: 0; height: 2px;
+    background-color: var(--accent);
+    transition: var(--transition-smooth);
 }
-
-.cta-button,
-.btn {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-}
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
 
 .cta-button {
     background-color: var(--accent);
-    color: var(--pure-white);
+    color: var(--charcoal-black);
+    font-family: var(--font-sans-header);
+    font-weight: 700;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+.cta-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
 }
 
 /*
-   3. MACROSCOPIC 2D CORE LAYOUT CONFIGURATION (Mobile-First Strategy)
-*/
-.macro-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    /* Strict Initial Single Column Framework */
-    gap: 2rem;
-    padding: 1.5rem;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-/* Hero Section Structural Defaults (Height bounded constraint) */
+   3. HERO CANVAS STAGE LAYER & BACKDROP EFFECT MATRIX [cite: 32]
+ */
 .hero-section {
-    background-color: var(--bg-card);
-    min-height: 360px;
-    padding: 3rem 2rem;
+    position: relative;
+    background-color: var(--bg-surface);
+    border-radius: 12px;
+    padding: 4rem 2.5rem;
+    min-height: 400px;
     display: flex;
     align-items: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.01);
+}
+
+.hero-glow-backdrop {
+    position: absolute;
+    top: -50%; right: -20%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(160,212,224,0.15) 0%, rgba(255,255,255,0) 70%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 2; }
+
+.badge-pill {
+    background-color: var(--border-subtle);
+    color: var(--accent);
+    font-family: var(--font-sans-header);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.35rem 0.85rem;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.02em;
 }
 
 .hero-content h1 {
-    margin-bottom: 1rem;
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
 }
 
 .hero-content p {
     color: var(--text-muted);
-    font-size: 1.1rem;
-    max-width: 650px;
-    margin-bottom: 2rem;
+    font-size: 1.15rem;
+    max-width: 680px;
+    margin-bottom: 2.5rem;
 }
 
-.hero-actions {
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.btn {
+    font-family: var(--font-sans-header);
+    font-weight: 600;
+    padding: 0.85rem 1.75rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+.btn-primary { background-color: var(--accent); color: var(--charcoal-black); font-weight: 700; }
+.btn-secondary { background-color: transparent; border: 2px solid var(--border-subtle); color: var(--text-primary); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+/*
+   4. LAYOUT ORCHESTRATION DRIVER UTILITIES [cite: 40, 59]
+ */
+.controls-panel { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.panel-header {
     display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--border-subtle);
+    padding-bottom: 0.75rem;
 }
 
-.btn-primary {
+.layout-switchers { display: flex; gap: 0.5rem; }
+.view-btn {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition-smooth);
+}
+.view-btn.active, .view-btn:hover {
     background-color: var(--accent);
-    color: var(--pure-white);
+    color: var(--charcoal-black);
 }
 
-.btn-secondary {
-    background-color: transparent;
-    border: 2px solid var(--accent);
-    color: var(--text-main);
-}
-
-/* Adaptive Content Grids */
+/* The Responsive Structural Card Engine [cite: 59] */
 .content-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    transition: var(--transition-smooth);
 }
 
 .card {
-    background-color: var(--bg-card);
-    padding: 2rem;
-    border-radius: 6px;
-    border-left: 4px solid var(--accent);
+    background-color: var(--bg-surface);
+    padding: 2.25rem 2rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    position: relative;
+    transition: var(--transition-smooth);
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.04);
 }
 
-.card-icon {
-    font-size: 0.85rem;
-    font-family: var(--font-heading);
-    font-weight: 700;
+.card-header-icon {
     color: var(--accent);
-    letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
+    display: inline-block;
 }
 
-.card h3 {
-    margin-bottom: 0.75rem;
-}
+.card h3 { margin-bottom: 0.75rem; font-size: 1.3rem; }
+.card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
 
-.card p {
-    color: var(--text-muted);
+/* Dynamic layout adjustment handled via javascript state triggers */
+.content-grid.list-view {
+    grid-template-columns: 1fr !important;
 }
-
-/* Sidebar Styling Blocks */
-.side-panel {
+.content-grid.list-view .card {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 1.5rem 2rem;
 }
-
-.sidebar-widget {
-    background-color: var(--bg-card);
-    padding: 2rem;
-    border-radius: 6px;
-}
-
-.sidebar-widget h3 {
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    padding-bottom: 0.5rem;
-}
-
-.status-widget ul {
-    list-style: none;
-}
-
-.status-widget li {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.75rem;
-    font-size: 0.9rem;
-}
-
-.status-widget span {
-    font-weight: 600;
-    color: var(--accent);
-}
-
-/* Terminal Footer */
-.site-footer {
-    background-color: var(--bg-card);
-    padding: 2.5rem 1.5rem;
-    margin-top: 4rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-}
-
-.footer-content p:first-child {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
+.content-grid.list-view .card-header-icon { margin-bottom: 0; padding-top: 0.25rem; }
 
 /* 
-   4. MIN-WIDTH MEDIA QUERY EXPANSION PROTOCOLS (Tablet & Desktop Steps)
+   5. PREMIUM GLASSMORPHISM ASIDE WIDGET PANEL [cite: 46]
 */
-
-/* STEP A: Tablet Structural Adjustments (>= 768px Viewports) */
-@media (min-width: 768px) {
-    .menu-toggle {
-        display: none;
-        /* Remove toggle switch tool on expansive targets */
-    }
-
-    .main-nav {
-        display: flex;
-        position: static;
-        width: auto;
-        padding: 0;
-        flex-direction: row;
-        align-items: center;
-        border-bottom: none;
-        gap: 2rem;
-        background: transparent;
-    }
-
-    .content-grid {
-        grid-template-columns: repeat(2, 1fr);
-        /* 2 Columns Layout Assignment */
-    }
+.macro-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 2rem 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-/* STEP B: Desktop Complex Architecture Setup (>= 1024px Viewports) */
+.side-panel { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.glass-widget {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.02);
+}
+html[data-vibe="grounded"] .glass-widget {
+    background: rgba(42, 39, 38, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* User Interface Widget Block */
+.profile-widget {
+    display: flex;
+    align-items: center;
+    border-left: 4px solid var(--accent);
+}
+.profile-header { display: flex; align-items: center; gap: 1.25rem; }
+.avatar {
+    width: 48px; height: 48px;
+    background-color: var(--accent);
+    color: var(--charcoal-black);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    font-weight: 700;
+    font-family: var(--font-sans-header);
+}
+.profile-header h4 { font-size: 1.1rem; }
+.profile-header p { font-size: 0.85rem; color: var(--text-muted); }
+
+.glass-widget h3 { font-size: 1.15rem; margin-bottom: 1.25rem; }
+.matrix-list { list-style: none; }
+.matrix-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+}
+.matrix-list li:last-child { border-bottom: none; }
+.matrix-list .label { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); }
+
+.status-pill {
+    font-size: 0.8rem;
+    font-family: var(--font-sans-header);
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* Site Base Footer Area */
+.site-footer {
+    border-top: 1px solid var(--border-subtle);
+    padding: 3rem 1.5rem;
+    text-align: center;
+    margin-top: 6rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/*
+   6. RESPONSIVE SCALE ADJUSTMENT BREAKPOINTS [cite: 149, 150]
+*/
+@media (min-width: 768px) {
+    .menu-toggle { display: none; }
+    .main-nav {
+        display: flex; position: static; width: auto; padding: 0;
+        flex-direction: row; align-items: center; border-bottom: none;
+        gap: 2.5rem; background: transparent; box-shadow: none;
+    }
+    .content-grid { grid-template-columns: repeat(2, 1fr); }
+    .matrix-list li { flex-direction: row; justify-content: space-between; align-items: center; }
+}
+
 @media (min-width: 1024px) {
     .macro-layout {
-        /* Macro Multi-Column Assignment Setup */
-        grid-template-columns: 1080px 1060px;
-        /* Precise layout rule split */
-        grid-template-columns: 3fr 1fr;
-        grid-template-areas:
-            "hero hero"
-            "content sidebar";
+        grid-template-columns: 1fr 320px;
+        grid-template-areas: "hero sidebar" "controls sidebar";
     }
-
-    .hero-section {
-        grid-area: hero;
-    }
-
-    .content-area {
-        grid-area: content;
-    }
-
-    .side-panel {
-        grid-area: sidebar;
-    }
-
-    .content-grid {
-        grid-template-columns: repeat(3, 1fr);
-        /* 3 Columns Layout Clean Slate */
-    }
+    .hero-section { grid-area: hero; }
+    .controls-panel { grid-area: controls; }
+    .side-panel { grid-area: sidebar; }
+    
+    .content-grid { grid-template-columns: repeat(3, 1fr); }
 }
